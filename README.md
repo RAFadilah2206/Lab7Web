@@ -4,7 +4,7 @@
 |----|---|-----|------|
 |**RA. Fadilah Amalia**|**312310298**|**TI.23.C1**|**Pemrograman Web 2**|
 
-# Praktikum 4: Framework Lanjutan (Modul Login)
+# Praktikum 4 : Framework Lanjutan (Modul Login)
 ## Tujuan
 1. Mahasiswa mampu memahami konsep dasar Auth dan Filter.
 2. Mahasiswa mampu memahami konsep dasar Login System.
@@ -261,9 +261,71 @@ class Auth implements FilterInterface
 }
 ```
 
+# Praktikum 5 : Pagination dan Pencarian
+## Langkah-langkah
+1. Membuat Pagination
+Pagination adalah proses untuk membagi data yang banyak ke dalam beberapa halaman, sehingga tampilan data menjadi lebih ringkas dan mudah dibaca. Fitur ini sangat berguna ketika kita menampilkan data dalam jumlah besar di sebuah website.
 
+Di CodeIgniter 4, pagination sudah disediakan oleh Library bawaan, sehingga implementasinya menjadi cukup mudah.
 
+Langkah-langkah:
+Buka kembali file Artikel.php pada folder Controller.
 
+Kemudian modifikasi method admin_index seperti berikut agar mendukung pagination:
+```php
+public function admin_index()
+ {
+ $title = 'Daftar Artikel';
+ $model = new ArtikelModel();
+ $data = [
+ 'title' => $title,
+ 'artikel' => $model->paginate(10), #data dibatasi 10 record
+per halaman
+ 'pager' => $model->pager,
+ ];
+ return view('artikel/admin_index', $data);
+ }
+```
+
+Setelah Anda menambahkan pagination di Controller, langkah selanjutnya adalah menampilkan navigasi pagination di file tampilan.
+```php
+<?= $pager->links(); ?>
+```
+
+2. Membuat Fitur Pencarian di CodeIgniter 4
+Fitur pencarian data digunakan untuk memfilter data berdasarkan kata kunci tertentu. Misalnya, mencari artikel berdasarkan judul atau isi.
+```php
+public function admin_index()
+ {
+ $title = 'Daftar Artikel';
+ $q = $this->request->getVar('q') ?? '';
+ $model = new ArtikelModel();
+ $data = [
+ 'title' => $title,
+ 'q' => $q,
+ 'artikel' => $model->like('judul', $q)->paginate(10), # data
+dibatasi 10 record per halaman
+ 'pager' => $model->pager,
+ ];
+ return view('artikel/admin_index', $data);
+ }
+```
+
+Setelah mengatur logika pencarian di Controller, langkah selanjutnya adalah menambahkan form pencarian di tampilan (view).
+```php
+<form method="get" class="form-search">
+ <input type="text" name="q" value="<?= $q; ?>" placeholder="Cari data">
+ <input type="submit" value="Cari" class="btn btn-primary">
+</form>
+```
+
+ubah link pager seperti berikut.
+```php
+<?= $pager->only(['q'])->links(); ?>
+```
+
+## Hasil output akhir
+![Cuplikan layar 2025-06-27 101049](https://github.com/user-attachments/assets/bc17de6a-cfdc-43f2-ab00-1d730b8cc983)
 
 
 
