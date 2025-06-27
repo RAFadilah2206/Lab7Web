@@ -248,7 +248,8 @@ class Auth implements FilterInterface
 ```
 ```
 ### Buka url dengan alamat http://localhost:8080/admin/artikel ketika alamat tersebut diakses maka, akan dimuculkan halaman login.
-![gambar](ss_gambar_pemrograman_web2-1/ssss2.png)
+![gambar]![Cuplikan layar 2025-06-27 101027](https://github.com/user-attachments/assets/790e72e1-b5c4-4e2e-80c1-dd365b3a36c5)
+)
 ```
 ## Fungsi Logout
 ### Tambahkan method logout pada Controller User seperti berikut:
