@@ -246,6 +246,7 @@ class Auth implements FilterInterface
 ### Selanjutnya buka file app/Config/Routes.php dan sesuaikan kodenya.
 
 ## Percobaan Akses Menu Admin
+
 ### Buka url dengan alamat http://localhost:8080/admin/artikel ketika alamat tersebut diakses maka, akan dimuculkan halaman login.
 ![gambar](ss_gambar_pemrograman_web2-1/ssss2.png)
 
