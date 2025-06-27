@@ -327,7 +327,54 @@ ubah link pager seperti berikut.
 ## Hasil output akhir
 ![Cuplikan layar 2025-06-27 101049](https://github.com/user-attachments/assets/bc17de6a-cfdc-43f2-ab00-1d730b8cc983)
 
+# Praktikum 6 Upload File Gambar
+## langkah-langkah Upload gambar pada artikel
+Buka kembali file Controller:
+app/Controllers/Artikel.php
+Ubah method add() menjadi seperti berikut:
+```php
+     public function add()
+     {
+     // validasi data.
+     $validation = \Config\Services::validation();
+     $validation->setRules(['judul' => 'required']);
+     $isDataValid = $validation->withRequest($this->request)->run();
 
+     if ($isDataValid)
+     {
+         $file = $this->request->getFile('gambar');
+         $file->move(ROOTPATH . 'public/gambar');
 
+         $artikel = new ArtikelModel();
+         $artikel->insert([
+             'judul' => $this->request->getPost('judul'),
+             'isi' => $this->request->getPost('isi'),
+             'slug' => url_title($this->request->getPost('judul')),
+             'gambar' => $file->getName(),
+         ]);
+         return redirect('admin/artikel');
+     }
+     $title = "Tambah Artikel";
+     return view('artikel/form_add', compact('title'));
+     }
+```
 
+Buka file view:
+app/Views/artikel/form_add.php
+Tambahkan input file berikut di dalam tag <form>, tepatnya di antara input judul dan isi atau di bagian yang sesuai:
+```php
+<p>
+  <input type="file" name="gambar" />
+</p>
+```
+
+Agar form dapat mengunggah file (misalnya gambar artikel), Anda harus menambahkan atribut encrypt type
+Ubah tag form menjadi seperti ini:
+```php
+<form action="" method="post" enctype="multipart/form-data"></form>
+```
+Lakukan pengujian upload file dengan mengakses halaman tambah artikel.
+![Cuplikan layar 2025-06-27 101240](https://github.com/user-attachments/assets/0658496d-237a-4248-b5b9-d34ec3271336)
+
+## Terima Kasih
 
