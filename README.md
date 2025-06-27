@@ -2,7 +2,7 @@
 
 |Nama|NIM|Kelas|Mata Kuliah|
 |----|---|-----|------|
-|**Radityatama Nugraha**|**312310644**|**TI.23.A6**|**Pemrograman Web 2**|
+|**RA. Fadilah Amalia**|**312310298**|**TI.23.C1**|**Pemrograman Web 2**|
 
 # Praktikum 4: Framework Lanjutan (Modul Login)
 ## Tujuan
