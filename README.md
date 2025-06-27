@@ -263,14 +263,10 @@ class Auth implements FilterInterface
 
 # Praktikum 5 : Pagination dan Pencarian
 ## Langkah-langkah
-1. Membuat Pagination
-Pagination adalah proses untuk membagi data yang banyak ke dalam beberapa halaman, sehingga tampilan data menjadi lebih ringkas dan mudah dibaca. Fitur ini sangat berguna ketika kita menampilkan data dalam jumlah besar di sebuah website.
-
-Di CodeIgniter 4, pagination sudah disediakan oleh Library bawaan, sehingga implementasinya menjadi cukup mudah.
-
+## 1. Membuat Pagination
+### Pagination adalah proses untuk membagi data yang banyak ke dalam beberapa halaman, sehingga tampilan data menjadi lebih ringkas dan mudah dibaca. Fitur ini sangat berguna ketika kita menampilkan data dalam jumlah besar di sebuah website. Di CodeIgniter 4, pagination sudah disediakan oleh Library bawaan, sehingga implementasinya menjadi cukup mudah.
 Langkah-langkah:
 Buka kembali file Artikel.php pada folder Controller.
-
 Kemudian modifikasi method admin_index seperti berikut agar mendukung pagination:
 ```php
 public function admin_index()
@@ -287,12 +283,12 @@ per halaman
  }
 ```
 
-Setelah Anda menambahkan pagination di Controller, langkah selanjutnya adalah menampilkan navigasi pagination di file tampilan.
+### Setelah Anda menambahkan pagination di Controller, langkah selanjutnya adalah menampilkan navigasi pagination di file tampilan.
 ```php
 <?= $pager->links(); ?>
 ```
 
-2. Membuat Fitur Pencarian di CodeIgniter 4
+### 2. Membuat Fitur Pencarian di CodeIgniter 4
 Fitur pencarian data digunakan untuk memfilter data berdasarkan kata kunci tertentu. Misalnya, mencari artikel berdasarkan judul atau isi.
 ```php
 public function admin_index()
@@ -311,7 +307,7 @@ dibatasi 10 record per halaman
  }
 ```
 
-Setelah mengatur logika pencarian di Controller, langkah selanjutnya adalah menambahkan form pencarian di tampilan (view).
+### Setelah mengatur logika pencarian di Controller, langkah selanjutnya adalah menambahkan form pencarian di tampilan (view).
 ```php
 <form method="get" class="form-search">
  <input type="text" name="q" value="<?= $q; ?>" placeholder="Cari data">
@@ -319,7 +315,7 @@ Setelah mengatur logika pencarian di Controller, langkah selanjutnya adalah mena
 </form>
 ```
 
-ubah link pager seperti berikut.
+### ubah link pager seperti berikut.
 ```php
 <?= $pager->only(['q'])->links(); ?>
 ```
@@ -329,9 +325,7 @@ ubah link pager seperti berikut.
 
 # Praktikum 6 Upload File Gambar
 ## langkah-langkah Upload gambar pada artikel
-Buka kembali file Controller:
-app/Controllers/Artikel.php
-Ubah method add() menjadi seperti berikut:
+### Buka kembali file Controller: app/Controllers/Artikel.php Ubah method add() menjadi seperti berikut:
 ```php
      public function add()
      {
@@ -359,8 +353,7 @@ Ubah method add() menjadi seperti berikut:
      }
 ```
 
-Buka file view:
-app/Views/artikel/form_add.php
+### Buka file view: app/Views/artikel/form_add.php
 Tambahkan input file berikut di dalam tag <form>, tepatnya di antara input judul dan isi atau di bagian yang sesuai:
 ```php
 <p>
@@ -368,13 +361,13 @@ Tambahkan input file berikut di dalam tag <form>, tepatnya di antara input judul
 </p>
 ```
 
-Agar form dapat mengunggah file (misalnya gambar artikel), Anda harus menambahkan atribut encrypt type
+### Agar form dapat mengunggah file (misalnya gambar artikel), Anda harus menambahkan atribut encrypt type
 Ubah tag form menjadi seperti ini:
 ```php
 <form action="" method="post" enctype="multipart/form-data"></form>
 ```
-Lakukan pengujian upload file dengan mengakses halaman tambah artikel.
+### Lakukan pengujian upload file dengan mengakses halaman tambah artikel.
 ![Cuplikan layar 2025-06-27 101240](https://github.com/user-attachments/assets/0658496d-237a-4248-b5b9-d34ec3271336)
 
-## Terima Kasih
+### Terima Kasih
 
