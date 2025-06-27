@@ -242,7 +242,7 @@ class Auth implements FilterInterface
 ### Selanjutnya buka file app/Config/Filters.php tambahkan kode berikut:
 ```php
 'auth' => App\Filters\Auth::class
-
+###
 ### Selanjutnya buka file app/Config/Routes.php dan sesuaikan kodenya.
 
 ## Percobaan Akses Menu Admin
